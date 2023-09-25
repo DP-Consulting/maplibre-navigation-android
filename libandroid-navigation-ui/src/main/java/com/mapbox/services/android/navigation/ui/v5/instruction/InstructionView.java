@@ -186,17 +186,17 @@ public class InstructionView extends RelativeLayout implements LifecycleObserver
       @Override
       public void onChanged(@Nullable Boolean isOffRoute) {
         if (isOffRoute != null) {
-          if (isOffRoute) {
-            showRerouteState();
-          } else if (isRerouting) {
-            hideRerouteState();
-            alertView.showReportProblem();
-          }
           isRerouting = isOffRoute;
+          if (isRerouting) {
+            showRerouteState();
+          } else {
+            hideRerouteState();
+            //alertView.showReportProblem();
+          }
         }
       }
     });
-    subscribeAlertView();
+    //subscribeAlertView();
     initializeButtonListeners();
     showButtons();
   }
